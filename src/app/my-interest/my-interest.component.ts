@@ -46,7 +46,8 @@ export class MyInterestComponent implements OnInit {
         var $grid = $('.grid').masonry({
           itemSelector: '.grid-item',
           percentPosition: true,
-          columnWidth: '.grid-sizer'
+          columnWidth: '.grid-sizer',
+          gutter: 4
         });
         // layout Masonry after each image loads
         $grid.imagesLoaded().progress( function() {

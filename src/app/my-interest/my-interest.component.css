@@ -108,12 +108,15 @@ body { font-family: sans-serif; }
 
 .grid-sizer,
 .grid-item {
-  width: 33.333%;
+    float: center;
+    width: 31%;
+    /* height: 60px; */
+    border: 2px solid hsla(0, 0%, 0%, 0.5);
+    margin-bottom: 5px;
+    margin-left: 10px;
+
 }
 
-.grid-item {
-  float: left;
-}
 
 .grid-item img {
   display: block;
