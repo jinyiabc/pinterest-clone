@@ -34,23 +34,6 @@ export class MyInterestComponent implements OnInit {
 
   }
 
-  @ViewChild('selectElem') el:ElementRef;
-
-  ngAfterViewInit() {
-      // init Masonry
-      var $grid = $('this.el.nativeElement').masonry({
-        itemSelector: '.grid-item',
-        percentPosition: true,
-        columnWidth: '.grid-sizer'
-      });
-      // layout Masonry after each image loads
-      $grid.imagesLoaded().progress( function() {
-        $grid.masonry();
-      });
-
-
-}
-
 
   constructor(private myinterests:MyInterestService) { }
 
@@ -59,18 +42,16 @@ export class MyInterestComponent implements OnInit {
             .subscribe( data => this.myInterests = data,
                         err => this.errorMsg = err);
 
-    // $(document).ready(function(){
-    //     // init Masonry
-    //     var $grid = $('.grid').masonry({
-    //       itemSelector: '.grid-item',
-    //       percentPosition: true,
-    //       columnWidth: '.grid-sizer'
-    //     });
-    //     // layout Masonry after each image loads
-    //     $grid.imagesLoaded().progress( function() {
-    //       $grid.masonry();
-    //     });
-    // });
+        // init Masonry
+        var $grid = $('.grid').masonry({
+          itemSelector: '.grid-item',
+          percentPosition: true,
+          columnWidth: '.grid-sizer'
+        });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+          $grid.masonry();
+        });
 
 }
 

@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { routingComponents, AppRoutingModule } from './app-routing.module';
 import { MyInterestService } from './my-interest.service';
+import { MasonComponent } from './mason/mason.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents
+    routingComponents,
+    MasonComponent
   ],
   imports: [
     BrowserModule,
