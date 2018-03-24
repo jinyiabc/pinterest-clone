@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MyInterestService } from '../my-interest.service';
 import { Interest } from '../interest';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-my-interest',
@@ -30,15 +32,46 @@ export class MyInterestComponent implements OnInit {
                           .subscribe( data => console.log(data),
                             err => this.errorMsg = err);
 
-
-
   }
+
+  @ViewChild('selectElem') el:ElementRef;
+
+  ngAfterViewInit() {
+      // init Masonry
+      var $grid = $('this.el.nativeElement').masonry({
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        columnWidth: '.grid-sizer'
+      });
+      // layout Masonry after each image loads
+      $grid.imagesLoaded().progress( function() {
+        $grid.masonry();
+      });
+
+
+}
+
+
   constructor(private myinterests:MyInterestService) { }
 
   ngOnInit() {
       this.myinterests.getMyInterests(this.user)
             .subscribe( data => this.myInterests = data,
                         err => this.errorMsg = err);
-  }
+
+    // $(document).ready(function(){
+    //     // init Masonry
+    //     var $grid = $('.grid').masonry({
+    //       itemSelector: '.grid-item',
+    //       percentPosition: true,
+    //       columnWidth: '.grid-sizer'
+    //     });
+    //     // layout Masonry after each image loads
+    //     $grid.imagesLoaded().progress( function() {
+    //       $grid.masonry();
+    //     });
+    // });
+
+}
 
 }
