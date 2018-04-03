@@ -1,29 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-declare var jquery:any;
-declare var $ :any;
+
 
 @Component({
   selector: 'app-mason',
-  templateUrl: './mason.component.html',
-  styleUrls: ['./mason.component.css']
+  template: `
+     <ngx-masonry>
+       <ngx-masonry-item class="masonry-item" *ngFor="let item of masonryItems">{{item.title}}</ngx-masonry-item>
+     </ngx-masonry>
+     `,
+  styles: [
+    `
+       .masonry-item { width: 200px; }
+     `
+  ]
 })
 export class MasonComponent implements OnInit {
 
+    masonryItems = [
+      { title: 'item 1' },
+      { title: 'item 2' },
+      { title: 'item 3' },
+      { title: 'item 4' },
+      { title: 'item 5' },
+      { title: 'item 6' }
+    ];
+
   constructor() { }
 
-  ngOnInit() {
-      // external js: masonry.pkgd.js, imagesloaded.pkgd.js
-      // init Masonry
-      var $grid = $('.grid').masonry({
-        itemSelector: '.grid-item',
-        percentPosition: true,
-        columnWidth: '.grid-sizer'
-      });
-      // layout Masonry after each image loads
-      $grid.imagesLoaded().progress( function() {
-        $grid.masonry();
-      });
-
-  }
+  ngOnInit() {}
 
 }

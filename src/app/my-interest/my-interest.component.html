@@ -52,52 +52,45 @@
   </div>
 </div>
 
-<h1>Masonry - imagesLoaded progress</h1>
+<!-- <h1>Masonry - imagesLoaded progress</h1>
 
 <div class="grid">
   <div class="grid-sizer"></div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
+    <img src="../assets/data/cow.jpg" />
   </div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
+    <img src="../assets/data/winbaby.jpg" />
   </div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
+    <img src="../assets/data/winnerYou.jpg" />
   </div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
+    <img src="../assets/data/winnerYou.jpg" />
   </div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
+    <img src="../assets/data/winnerYou.jpg" />
   </div>
   <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
+    <img src="../assets/data/winnerYou.jpg" />
   </div>
-  <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" />
-  </div>
-  <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
-  </div>
-  <div class="grid-item">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
-  </div>
-</div>
+</div> -->
 
+<ngx-masonry>
+  <ngx-masonry-item class="masonry-item" *ngFor="let interest of myInterests">
+      <img alt="" src="{{interest.imageUrl}}">
+  </ngx-masonry-item>
+</ngx-masonry>
 
+<!-- <div class="grid">
+<div class="grid-sizer"></div>
 
-<div class="container">
-<div class="row">
-
-<div class="cover ng-scope" *ngFor= "let interest of myInterests" >
+<div class="grid-item" *ngFor= "let interest of myInterests" >
 <a>
     <img alt="" src="{{interest.imageUrl}}">
-    <button type="button" class="close" (click)="deleteInterest(interest.title)">×</button>
+    <button type="button" (click)="deleteInterest(interest.title)">×</button>
 </a>
 <p>{{interest.title}}</p>
 </div>
 
-
-</div>
-</div>
+</div> -->

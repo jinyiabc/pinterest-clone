@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { routingComponents, AppRoutingModule } from './app-routing.module';
 import { MyInterestService } from './my-interest.service';
 import { MasonComponent } from './mason/mason.component';
+import { NgxMasonryModule } from './ngx-masonry/ngx-masonry.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MasonComponent } from './mason/mason.component';
     BrowserModule,
     HttpClientModule,
     HttpModule,    // http
+    NgxMasonryModule,
     AppRoutingModule
   ],
   providers: [MyInterestService],

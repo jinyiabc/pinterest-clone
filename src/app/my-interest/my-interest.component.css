@@ -109,11 +109,11 @@ body { font-family: sans-serif; }
 .grid-sizer,
 .grid-item {
     float: center;
-    width: 31%;
+    width: 20%;
     /* height: 60px; */
     border: 2px solid hsla(0, 0%, 0%, 0.5);
-    margin-bottom: 5px;
-    margin-left: 10px;
+    /* margin-bottom: 5px;
+    margin-left: 10px; */
 
 }
 
@@ -122,3 +122,6 @@ body { font-family: sans-serif; }
   display: block;
   max-width: 100%;
 }
+
+
+.masonry-item { width: 30%; }
