@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MyInterestService } from '../my-interest.service';
 import { Interest } from '../interest';
+import { NgxMasonryOptions } from '../ngx-masonry/ngx-masonry-options.interface';
+declare var jquery:any;
+declare var $ :any;
+
 
 
 @Component({
@@ -13,6 +17,11 @@ export class MyInterestComponent implements OnInit {
     myInterests;
     errorMsg;
     public newInterest = new Interest('as','');
+
+    updLayout: boolean = false;
+    updateLayout() {
+      this.updLayout = !this.updLayout;
+    }
 
 
     deleteInterest(title){
@@ -33,6 +42,20 @@ export class MyInterestComponent implements OnInit {
 
   }
 
+   readURL(event) {
+        console.log(event.target.value)
+        $('#image_upload_preview').attr('src', event.target.value);
+  }
+
+
+  public masonryOptions: NgxMasonryOptions = {
+    transitionDuration: '0.2s',
+    gutter: 3,
+    resize: true,
+    initLayout: true,
+    fitWidth: true
+  };
+
 
   constructor(private myinterests:MyInterestService) { }
 
@@ -40,6 +63,12 @@ export class MyInterestComponent implements OnInit {
       this.myinterests.getMyInterests(this.user)
             .subscribe( data => this.myInterests = data,
                         err => this.errorMsg = err);
+
+
+                        // $("#inputFile").change(function () {
+                        //     readURL(this);
+                        // });
+
 
 }
 
