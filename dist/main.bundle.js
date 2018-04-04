@@ -80,7 +80,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<app-navbar></app-navbar>\r\n<!-- <app-mason></app-mason> -->\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-navbar></app-navbar>\n<!-- <app-mason></app-mason> -->\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -261,12 +261,13 @@ var MyInterestService = /** @class */ (function () {
                 'Authorization': 'my-auth-token'
             })
         };
-        var addUrl = '../assets/data/data.json';
+        var user = 'jinyiabc'; // TBD
+        var addUrl = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].app_url + ("/myInterest/" + user);
         return this.http.post(addUrl, interest, httpOptions)
             .catch(this.errorHandler);
     };
     MyInterestService.prototype.deleteInterest = function (title) {
-        var deleteUrl = '../assets/data/data.json';
+        var deleteUrl = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].app_url + ("/myInterest/" + title);
         var httpOptions = {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
                 'Content-Type': 'application/json',
@@ -293,14 +294,14 @@ var MyInterestService = /** @class */ (function () {
 /***/ "./src/app/navbar/navbar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "body {\r\n  padding-bottom: 20px;\r\n}\r\n\r\n.navbar {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-control--rounded {\r\n    border-radius: 25px;\r\n}\r\n"
+module.exports = "body {\n  padding-bottom: 20px;\n}\n\n.navbar {\n  margin-bottom: 20px;\n}\n\n.form-control--rounded {\n    border-radius: 25px;\n}\n"
 
 /***/ }),
 
 /***/ "./src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sprinterest</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExample04\" aria-controls=\"navbarsExample04\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarsExample04\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item \">\r\n        <a class=\"nav-link\" href=\"allbooks\">Home <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n    </ul>\r\n    <form class=\"form-inline my-2 my-md-0\">\r\n      <input class=\"form-control\" type=\"text\" placeholder=\"Search\">\r\n    </form>\r\n    <ul class=\"navbar-nav\">\r\n        <li class=\"nav-item-divider\"></li>\r\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"!showNavBar\" href=\"/login\">Log in</a></li>\r\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/login\" (click)=\"logout()\">Log out</a></li>\r\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/allInterests\">Recent Springs</a></li>\r\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/myInterest\">Your Spring Board</a></li>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"#\">Sprinterest</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExample04\" aria-controls=\"navbarsExample04\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarsExample04\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item \">\n        <a class=\"nav-link\" href=\"allbooks\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-md-0\">\n      <input class=\"form-control\" type=\"text\" placeholder=\"Search\">\n    </form>\n    <ul class=\"navbar-nav\">\n        <li class=\"nav-item-divider\"></li>\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"!showNavBar\" href=\"/login\">Log in</a></li>\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/login\" (click)=\"logout()\">Log out</a></li>\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/allInterests\">Recent Springs</a></li>\n        <li class=\"nav-item\"><a class=\"nav-link\" *ngIf=\"showNavBar\" href=\"/myInterest\">Your Spring Board</a></li>\n\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 

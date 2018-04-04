@@ -25,14 +25,15 @@ export class MyInterestService {
                 'Authorization': 'my-auth-token'
             })
         };
-        const addUrl = '../assets/data/data.json';
+        const user = 'jinyiabc';  // TBD
+        const addUrl = environment.app_url + `/myInterest/${user}`;
         return this.http.post<Interest>(addUrl, interest, httpOptions)
                         .catch(this.errorHandler)
     }
 
 
     deleteInterest(title:string):Observable<{}>{
-        const deleteUrl = '../assets/data/data.json';
+        const deleteUrl = environment.app_url + `/myInterest/${title}`;
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type':  'application/json',
