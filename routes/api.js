@@ -6,9 +6,16 @@ const User = require('../models/users');
 router.get('/:userId/polls',function(req,res,next){
   const query = {'github.username':req.params.userId};
   User.find(query).then(function(results){
-    res.send(results);
+    res.send(results.interests);
   });
 });
+
+router.get('/myInterest/:user', function(req, res, next){
+    const query = {'username':req.params.user};
+    User.find(query).then(function(results){
+      res.send(results[0].interests);
+    });
+})
 
 // Get single poll from users
 router.get('/:userId/polls/poll',function(req,res,next){
@@ -53,6 +60,44 @@ router.post('/:userId/polls',function(req,res,next){
 
 });
 
+router.post('/allInterests', function(req, res, next){
+    const query = {'username':'jinyiabc'};
+  const update = {interests:
+      [{
+          "title":"cowabunga!",
+          "imageUrl":"../assets/data/cow.jpg"
+      },
+      {
+          "title":"Win baby yeah!",
+          "imageUrl":"../assets/data/winbaby.jpg"
+      },
+      {
+          "title":"Win baby yeah!",
+          "imageUrl":"../assets/data/winbaby.jpg"
+      },
+      {
+          "title":"Win baby yeah!",
+          "imageUrl":"../assets/data/winbaby.jpg"
+      },
+      {
+          "title":"Win baby yeah!",
+          "imageUrl":"../assets/data/winbaby.jpg"
+      },
+      {
+          "title":"A winner is you!",
+          "imageUrl":"../assets/data/winnerYou.jpg"
+      }
+  ]};
+
+    User.findOneAndUpdate(query,{$push:update},{upsert: true}).then(function(){   //upsert: bool - creates the object if it doesn't exist. defaults to false.
+
+      User.findOne(query).then(function(user){
+        res.send(user);
+      })
+    }).catch(next);
+
+
+})
 // Update a poll in the db
 
 // db.collection.update({ d : 2014001 , m :123456789},

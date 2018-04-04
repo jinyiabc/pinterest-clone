@@ -13,7 +13,7 @@ declare var $ :any;
   styleUrls: ['./my-interest.component.css']
 })
 export class MyInterestComponent implements OnInit {
-    user = 'TBD';
+    user = 'jinyiabc';
     myInterests;
     errorMsg;
     public newInterest = new Interest('as','');
@@ -61,7 +61,8 @@ export class MyInterestComponent implements OnInit {
 
   ngOnInit() {
       this.myinterests.getMyInterests(this.user)
-            .subscribe( data => this.myInterests = data,
+            .subscribe( data => {this.myInterests = data;
+                        console.log(data);},
                         err => this.errorMsg = err);
 
 

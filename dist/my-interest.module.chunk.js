@@ -8546,7 +8546,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MyInterestComponent = /** @class */ (function () {
     function MyInterestComponent(myinterests) {
         this.myinterests = myinterests;
-        this.user = 'TBD';
+        this.user = 'jinyiabc';
         this.newInterest = new __WEBPACK_IMPORTED_MODULE_2__interest__["a" /* Interest */]('as', '');
         this.updLayout = false;
         this.masonryOptions = {
@@ -8582,7 +8582,10 @@ var MyInterestComponent = /** @class */ (function () {
     MyInterestComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.myinterests.getMyInterests(this.user)
-            .subscribe(function (data) { return _this.myInterests = data; }, function (err) { return _this.errorMsg = err; });
+            .subscribe(function (data) {
+            _this.myInterests = data;
+            console.log(data);
+        }, function (err) { return _this.errorMsg = err; });
         // $("#inputFile").change(function () {
         //     readURL(this);
         // });

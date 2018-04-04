@@ -229,6 +229,7 @@ var MasonComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/catch.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -242,12 +243,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MyInterestService = /** @class */ (function () {
     function MyInterestService(http) {
         this.http = http;
     }
-    MyInterestService.prototype.getMyInterests = function (email) {
-        var myUrl = '../assets/data/data.json';
+    MyInterestService.prototype.getMyInterests = function (user) {
+        // const myUrl = '../assets/data/data.json';
+        var myUrl = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].app_url + ("/myInterest/" + user);
         return this.http.get(myUrl)
             .catch(this.errorHandler);
     };
@@ -656,7 +659,8 @@ can be found in the LICENSE file at http://angular.io/license
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    app_url: 'api'
 };
 
 
