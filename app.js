@@ -7,12 +7,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+require('dotenv').load();
+
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,10 +23,47 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
 
-app.use('/', index);
-app.use('/users', users);
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+//uses persistent login sessions,
+app.use(passport.session());
+var path = process.cwd();
+
+app.get('/', function(req, res, next) {
+  res.render('index');
+});
+app.use('/home', function(req,res,next){
+  res.render('home',{user: req.user})
+});
+app.use('/login',function(req,res,next){
+  res.render('login')
+});
+app.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('profile', { user: req.user });
+  });
+
+app.route('/auth/twitter')
+	.get(passport.authenticate('twitter'));
+
+app.route('/auth/twitter/callback')
+	.get(passport.authenticate('twitter', {
+		successRedirect: '/home',
+		failureRedirect: '/login'
+	}));
+
+
+// initialize the routes
+app.use('/api',api);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
