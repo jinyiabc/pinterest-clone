@@ -7,10 +7,19 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var mongoose = require('mongoose');
+var api = require('./routes/api');
+
 require('dotenv').load();
+var session = require('express-session');
+var passport = require('./config/passport');
 
 
 var app = express();
+// connect to mongoDB
+// mongoose.connect('mongodb://localhost/users');
+mongoose.connect(process.env.MONGO_URI);
+mongoose.Promise = global.Promise;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
