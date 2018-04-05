@@ -69,7 +69,9 @@ app.use('/login',function(req,res,next){
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    // res.render('profile', { user: req.user });
+    console.log(req.user);
+    res.send(req.user);
   });
 
 app.route('/auth/twitter')

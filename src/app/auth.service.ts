@@ -32,10 +32,10 @@ export class AuthService {
 constructor(private http: HttpClient) { } // DI
 
 isLoggedIn = false;
-logIn():Observable<Auth>{
+logIn():Observable<User>{
 
-    const myUrl =  "https://sprinterest-fcc.herokuapp.com/api/login";
-    return this.http.get<Auth>(myUrl)
+    const myUrl =  "https://sprinterest-fcc.herokuapp.com/profile";
+    return this.http.get<User>(myUrl)
                     // .map(user => {
                     //     if(user){
                     //         localStorage.setItem('currentUser', JSON.stringify(user));
