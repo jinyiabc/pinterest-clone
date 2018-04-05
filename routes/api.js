@@ -15,31 +15,18 @@ app.get('/api/login',
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
       console.log('req.user',req.user);
-        /*req.user: {
-        _id: 5a9f97cdf099e98fd62437b9,
-        email: '1234@1234.com',
-        __v: 0,
-        displayName: '',
-        password: '1234' }*/
-    // res.redirect('/');
+
+/* req.user { interests: [],
+   _id: '5ac455c0b2541800206b14f2',
+   twitterId: '955461477552369664',
+   username: 'jinyiabc',
+   displayName: 'Alex J.Y.',
+   imageUrl: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
+  __v: 0 }*/
+
 	res.send({withCredentials: true, twitterId: req.user.twitterId})
 	// res.send(true);
   });
-
-  app.get('/', function(req, res, next) {
-    res.render('index');
-  });
-  app.use('/home', function(req,res,next){
-    res.render('home',{user: req.user})
-  });
-  app.use('/login',function(req,res,next){
-    res.render('login')
-  });
-  app.get('/profile',
-    require('connect-ensure-login').ensureLoggedIn(),
-    function(req, res){
-      res.render('profile', { user: req.user });
-    });
 
 app.get('/api/myInterest/:user', function(req, res, next){
     const query = {'username':req.params.user};
