@@ -11,10 +11,11 @@ function isLoggedIn (req, res, next) {
 }
 
 app.get('/api/login',
-  isLoggedIn,
+
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
       console.log('req.user',req.user);
+	  console.log(req.session);
 
 /* req.user { interests: [],
    _id: '5ac455c0b2541800206b14f2',

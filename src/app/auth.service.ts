@@ -34,15 +34,15 @@ constructor(private http: HttpClient) { } // DI
 isLoggedIn = false;
 logIn():Observable<Auth>{
 
-    const myUrl =  "/auth/twitter";
-    return this.http.get<User>(myUrl)
-                    .map(user => {
-                        if(user){
-                            localStorage.setItem('currentUser', JSON.stringify(user));
-                            this.isLoggedIn = true;
-                        }
-                        return user;
-                    })
+    const myUrl =  "https://sprinterest-fcc.herokuapp.com/api/login";
+    return this.http.get<Auth>(myUrl)
+                    // .map(user => {
+                    //     if(user){
+                    //         localStorage.setItem('currentUser', JSON.stringify(user));
+                    //         this.isLoggedIn = true;
+                    //     }
+                    //     return user;
+                    // })
                     .catch(this.errorHandler);
 }
 logout(): void {

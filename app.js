@@ -26,17 +26,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-app.use('/login',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
-app.use('/allInterests',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
-app.use('/myInterest',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
+// var distDir = __dirname + "/dist/";
+// app.use(express.static(distDir));
+// app.use('/login',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
+// app.use('/allInterests',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
+// app.use('/myInterest',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -56,20 +56,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 var path = process.cwd();
 
-// app.get('/', function(req, res, next) {
-//   res.render('index');
-// });
-// app.use('/home', function(req,res,next){
-//   res.render('home',{user: req.user})
-// });
-// app.use('/login',function(req,res,next){
-//   res.render('login')
-// });
-// app.get('/profile',
-//   require('connect-ensure-login').ensureLoggedIn(),
-//   function(req, res){
-//     res.render('profile', { user: req.user });
-//   });
+app.get('/', function(req, res, next) {
+  res.render('index');
+});
+app.use('/home', function(req,res,next){
+  res.render('home',{user: req.user})
+});
+app.use('/login',function(req,res,next){
+  res.render('login')
+});
+app.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('profile', { user: req.user });
+  });
 
 app.route('/auth/twitter')
 	.get(passport.authenticate('twitter'));
