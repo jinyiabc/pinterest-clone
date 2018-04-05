@@ -76,7 +76,7 @@ app.route('/auth/twitter')
 
 app.route('/auth/twitter/callback')
 	.get(passport.authenticate('twitter', {
-		successRedirect: '/home',
+		successRedirect: '/myInterest',
 		failureRedirect: '/login'
 	}));
 
