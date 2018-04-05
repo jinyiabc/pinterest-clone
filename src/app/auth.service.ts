@@ -10,6 +10,8 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { Auth } from './auth';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/of';
+
 
 
 @Injectable()
@@ -30,15 +32,10 @@ export class AuthService {
 constructor(private http: HttpClient) { } // DI
 
 isLoggedIn = false;
-logIn(user:User):Observable<Auth>{
-    const httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'Authorization': 'my-auth-token'
-        })
-    };
+logIn():Observable<Auth>{
+
     const myUrl = environment.app_url + "/login";
-    return this.http.post<User>(myUrl, user, httpOptions)
+    return this.http.get<User>(myUrl)
                     .map(user => {
                         if(user){
                             localStorage.setItem('currentUser', JSON.stringify(user));
@@ -54,6 +51,14 @@ logout(): void {
 
 errorHandler(error: HttpErrorResponse){
   return Observable.throw(error.message || "Server Error");
+}
+
+checkedLogin():Observable<any>{
+    const status = JSON.parse(localStorage.getItem('currentUser'));
+    if (status === null || status.length === 0){
+        return Observable.of(false);
+    }
+    return Observable.of(status.withCredentials);
 }
 
 }

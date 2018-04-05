@@ -1,6 +1,6 @@
 export class Auth {
     constructor(
       public withCredentials: boolean,
-      public email: string
+      public twitterId: string
     ) {  }
 }

@@ -10,6 +10,11 @@ import { routingComponents, AppRoutingModule } from './app-routing.module';
 import { MyInterestService } from './my-interest.service';
 import { MasonComponent } from './mason/mason.component';
 import { NgxMasonryModule } from './ngx-masonry/ngx-masonry.module';
+import { LoginRoutingModule } from './login/login-routing.module';
+import { LoginComponent } from './login/login.component';
+import { AlertService } from './alert/alert.service';
+import { GlobalEventsManager } from './GlobalEventsManager';
+import { AuthGuard } from './auth-guard.service';
 
 
 @NgModule({
@@ -17,6 +22,7 @@ import { NgxMasonryModule } from './ngx-masonry/ngx-masonry.module';
     AppComponent,
     NavbarComponent,
     routingComponents,
+    LoginComponent,
     MasonComponent
   ],
   imports: [
@@ -24,9 +30,10 @@ import { NgxMasonryModule } from './ngx-masonry/ngx-masonry.module';
     HttpClientModule,
     HttpModule,    // http
     NgxMasonryModule,
+    LoginRoutingModule,
     AppRoutingModule
   ],
-  providers: [MyInterestService],
+  providers: [MyInterestService,AlertService, GlobalEventsManager, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
