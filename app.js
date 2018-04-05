@@ -60,6 +60,7 @@ app.get('/', function(req, res, next) {
   res.render('index');
 });
 app.use('/home', function(req,res,next){
+    console.log('req.user:',req.user);
   res.render('home',{user: req.user})
 });
 app.use('/login',function(req,res,next){
@@ -76,7 +77,7 @@ app.route('/auth/twitter')
 
 app.route('/auth/twitter/callback')
 	.get(passport.authenticate('twitter', {
-		successRedirect: '/',
+		successRedirect: '/home',
 		failureRedirect: '/login'
 	}));
 
