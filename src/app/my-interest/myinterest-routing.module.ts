@@ -10,7 +10,7 @@ import { AuthGuard } from '../auth-guard.service';
 const myInterestRoutes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
           { path: '', component: MyInterestComponent }
         ]
