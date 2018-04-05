@@ -2,7 +2,7 @@ const User = require('../models/users');
 
 module.exports = function (app, passport){
 
-app.post('/api/login',
+app.get('/api/login',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
