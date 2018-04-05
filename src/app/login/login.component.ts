@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
               // Redirect the user
               this.alertservice.success('login successful', true);
               this.globalEventsManager.showNavBar(true);
-              this.router.navigate([redirect],navigationExtras);
+                  this.router.navigate([redirect],navigationExtras);
 
           }
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit(event){
+  onSubmit(){
 
       // this.user.email = event.target[0].value;
       // this.user.password = event.target[1].value;
