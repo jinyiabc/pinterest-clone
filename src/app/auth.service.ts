@@ -34,7 +34,7 @@ constructor(private http: HttpClient) { } // DI
 isLoggedIn = false;
 logIn():Observable<Auth>{
 
-    const myUrl = environment.app_url + "/auth/twitter";
+    const myUrl =  "/auth/twitter";
     return this.http.get<User>(myUrl)
                     .map(user => {
                         if(user){
