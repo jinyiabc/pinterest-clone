@@ -2,8 +2,16 @@ const User = require('../models/users');
 
 module.exports = function (app, passport){
 
+function isLoggedIn (req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	} else {
+		res.redirect('/login');
+	}
+}
+
 app.get('/api/login',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  isLoggedIn,
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
       console.log('req.user',req.user);
