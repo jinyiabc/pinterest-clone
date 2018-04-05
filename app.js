@@ -8,8 +8,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var mongoose = require('mongoose');
-var api = require('./routes/api');
-
+// var api = require('./routes/api');
+var routes = require('./routes/api');
 require('dotenv').load();
 var session = require('express-session');
 var passport = require('./config/passport');
@@ -26,17 +26,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'public')));
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-app.use('/login',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
-app.use('/allInterests',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
-app.use('/myInterest',function(req,res){
-    res.sendFile(__dirname + '/dist/index.html');
-});
+// var distDir = __dirname + "/dist/";
+// app.use(express.static(distDir));
+// app.use('/login',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
+// app.use('/allInterests',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
+// app.use('/myInterest',function(req,res){
+//     res.sendFile(__dirname + '/dist/index.html');
+// });
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -82,7 +82,8 @@ app.route('/auth/twitter/callback')
 
 
 // initialize the routes
-app.use('/api',api);
+// app.use('/api',api);
+routes(app,passport);
 
 
 // catch 404 and forward to error handler

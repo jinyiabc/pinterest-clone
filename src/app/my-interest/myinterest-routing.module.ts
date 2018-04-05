@@ -1,6 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyInterestComponent } from './my-interest.component';
+import { AuthGuard } from '../auth-guard.service';
 
 
 // import { AuthGuard }                from '../auth-guard.service';
@@ -9,7 +10,7 @@ import { MyInterestComponent } from './my-interest.component';
 const myInterestRoutes: Routes = [
   {
     path: '',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
           { path: '', component: MyInterestComponent }
         ]

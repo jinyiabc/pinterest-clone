@@ -1,16 +1,46 @@
-const express = require('express');
-const router = express.Router();
 const User = require('../models/users');
 
+module.exports = function (app, passport){
 
-router.get('/myInterest/:user', function(req, res, next){
+app.post('/api/login',
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+      // console.log('Is authenticate?',req.isAuthenticated());
+      console.log('req.user',req.user);
+        /*req.user: {
+        _id: 5a9f97cdf099e98fd62437b9,
+        email: '1234@1234.com',
+        __v: 0,
+        displayName: '',
+        password: '1234' }*/
+    // res.redirect('/');
+	res.send({withCredentials: true, twitterId: req.user.twitterId})
+	// res.send(true);
+  });
+
+  app.get('/', function(req, res, next) {
+    res.render('index');
+  });
+  app.use('/home', function(req,res,next){
+    res.render('home',{user: req.user})
+  });
+  app.use('/login',function(req,res,next){
+    res.render('login')
+  });
+  app.get('/profile',
+    require('connect-ensure-login').ensureLoggedIn(),
+    function(req, res){
+      res.render('profile', { user: req.user });
+    });
+
+app.get('/api/myInterest/:user', function(req, res, next){
     const query = {'username':req.params.user};
     User.find(query).then(function(results){
       res.send(results[0].interests);
     });
 })
 
-router.delete('/myInterest/:title', function(req, res, next){
+app.delete('/api/myInterest/:title', function(req, res, next){
     const query = {'username':'jinyiabc'};
     const update = {
                     $pull:{'interests':{"title":req.params.title}}
@@ -28,7 +58,7 @@ router.delete('/myInterest/:title', function(req, res, next){
 
 
 // Get all polls from all users
-router.get('/polls',function(req,res,next){
+app.get('/polls',function(req,res,next){
   const query = {};
 
   User.find(query).then(function(results){
@@ -38,7 +68,7 @@ router.get('/polls',function(req,res,next){
 });
 
 
-router.post('/myInterest/:username',function(req, res, next){
+app.post('/api/myInterest/:username',function(req, res, next){
     const query = {'username':req.params.username};
     const update = {interests: {
                           $each:[ req.body ],
@@ -54,7 +84,7 @@ router.post('/myInterest/:username',function(req, res, next){
 
 })
 
-router.post('/allInterests', function(req, res, next){
+app.post('/api/allInterests', function(req, res, next){
     const query = {'username':'jinyiabc'};
   const update = {interests:
       [{
@@ -94,4 +124,4 @@ router.post('/allInterests', function(req, res, next){
 })
 
 
-module.exports = router;
+}
