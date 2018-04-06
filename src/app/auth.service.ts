@@ -58,7 +58,7 @@ checkedLogin():Observable<any>{
     if (status === null || status.length === 0){
         return Observable.of(false);
     }
-    return Observable.of(true);
+    return Observable.of(status.username);
 }
 
 }

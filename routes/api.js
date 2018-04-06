@@ -30,6 +30,24 @@ app.get('/api/login',
 	// res.send(true);
   });
 
+app.post('/api/:username/islikedby', function(req, res, next){
+	const query = {
+		"username": req.body.username,
+		"interests.title": req.body.title
+	}
+	const update = {
+		$set: {
+			"interests.$.isLiked": req.params.username
+		}
+	}
+	User.findOneAndUpdate(query, update, {upsert: true}).then(function(){
+		  User.findOne(query).then(function(result){
+			res.send(result);
+		  })
+	}).catch(next);
+});
+
+
 app.get('/api/myInterest/:user', function(req, res, next){
     const query = {'username':req.params.user};
     User.find(query).then(function(results){
@@ -85,30 +103,36 @@ app.post('/api/myInterest/:username',function(req, res, next){
 })
 
 app.post('/api/allInterests', function(req, res, next){
-    const query = {'username':'jinyiabc1'};
+    const query = {'username':'jinyiabc'};
   const update = {interests:
       [{
           "title":"cowabunga!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/cow.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"A winner is you!",
+		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winnerYou.jpg"
       }
   ]};

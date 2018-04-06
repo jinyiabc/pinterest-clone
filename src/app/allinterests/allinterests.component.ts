@@ -19,6 +19,7 @@ export class AllinterestsComponent implements OnInit {
       fitWidth: true
     };
 
+    currentUser;
   constructor(private myinterests:MyInterestService,
               private authservice:AuthService,
               private globalEventsManager:GlobalEventsManager) { }
@@ -31,7 +32,16 @@ export class AllinterestsComponent implements OnInit {
                         err => this.errorMsg = err);
 
         this.authservice.checkedLogin().subscribe(data =>
-          this.globalEventsManager.showNavBar(data))
+            {
+                if(data){
+                    this.globalEventsManager.showNavBar(true);
+                    this.currentUser = data;
+                } else {
+                    this.globalEventsManager.showNavBar(false);
+                    this.currentUser = '';
+                }
+                console.log(this.currentUser);
+            });
   }
 
 }
