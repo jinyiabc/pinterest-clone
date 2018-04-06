@@ -53,13 +53,13 @@ errorHandler(error: HttpErrorResponse){
   return Observable.throw(error.message || "Server Error");
 }
 
-// checkedLogin():Observable<any>{
-//     const status = JSON.parse(localStorage.getItem('currentUser'));
-//     if (status === null || status.length === 0){
-//         return Observable.of(false);
-//     }
-//     return Observable.of(status.withCredentials);
-// }
+checkedLogin():Observable<any>{
+    const status = JSON.parse(localStorage.getItem('currentUser'));
+    if (status === null || status.length === 0){
+        return Observable.of(false);
+    }
+    return Observable.of(true);
+}
 
 }
 /*

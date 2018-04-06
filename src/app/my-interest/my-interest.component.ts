@@ -15,7 +15,7 @@ declare var $ :any;
   styleUrls: ['./my-interest.component.css']
 })
 export class MyInterestComponent implements OnInit {
-    user = 'jinyiabc';
+    user;
     myInterests;
     errorMsg;
     isAuthenticated;
