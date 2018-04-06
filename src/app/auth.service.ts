@@ -34,7 +34,7 @@ constructor(private http: HttpClient) { } // DI
 isLoggedIn = false;
 logIn():Observable<User>{
 
-    const myUrl =  "https://sprinterest-fcc.herokuapp.com/auth/twitter";
+    const myUrl =  "https://sprinterest-fcc.herokuapp.com/api/login";
     return this.http.get<User>(myUrl)
                     // .map(user => {
                     //     if(user){

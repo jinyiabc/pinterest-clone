@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MyInterestService } from '../my-interest.service';
 import { Interest } from '../interest';
 import { NgxMasonryOptions } from '../ngx-masonry/ngx-masonry-options.interface';
+import { AuthService } from '../auth.service';
 declare var jquery:any;
 declare var $ :any;
 
@@ -16,6 +17,7 @@ export class MyInterestComponent implements OnInit {
     user = 'jinyiabc';
     myInterests;
     errorMsg;
+    isLoggedIn;
     public newInterest = new Interest('as','');
 
     updLayout: boolean = false;
@@ -57,7 +59,8 @@ export class MyInterestComponent implements OnInit {
   };
 
 
-  constructor(private myinterests:MyInterestService) { }
+  constructor(private myinterests:MyInterestService,
+              private authservice:AuthService) { }
 
   ngOnInit() {
       this.myinterests.getMyInterests(this.user)
@@ -65,7 +68,7 @@ export class MyInterestComponent implements OnInit {
                         console.log(data);},
                         err => this.errorMsg = err);
 
-
+      this.authservice.logIn().subscribe(data => this.isLoggedIn = data )
                         // $("#inputFile").change(function () {
                         //     readURL(this);
                         // });

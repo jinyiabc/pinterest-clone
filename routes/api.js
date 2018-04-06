@@ -11,7 +11,7 @@ function isLoggedIn (req, res, next) {
 }
 
 app.get('/api/login',
-
+  require('connect-ensure-login').ensureLoggedIn(),
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
       console.log('req.user',req.user);
@@ -25,7 +25,8 @@ app.get('/api/login',
    imageUrl: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
   __v: 0 }*/
 
-	res.send({withCredentials: true, twitterId: req.user.twitterId})
+	// res.send({withCredentials: true, twitterId: req.user.twitterId})
+	res.send(req.session.passport.user)
 	// res.send(true);
   });
 

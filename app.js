@@ -24,19 +24,19 @@ mongoose.Promise = global.Promise;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// var distDir = __dirname + "/dist/";
-// app.use(express.static(distDir));
-// app.use('/login',function(req,res){
-//     res.sendFile(__dirname + '/dist/index.html');
-// });
-// app.use('/allInterests',function(req,res){
-//     res.sendFile(__dirname + '/dist/index.html');
-// });
-// app.use('/myInterest',function(req,res){
-//     res.sendFile(__dirname + '/dist/index.html');
-// });
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+app.use('/login',function(req,res){
+    res.sendFile(__dirname + '/dist/index.html');
+});
+app.use('/allInterests',function(req,res){
+    res.sendFile(__dirname + '/dist/index.html');
+});
+app.use('/myInterest',function(req,res){
+    res.sendFile(__dirname + '/dist/index.html');
+});
 // uncomment after placing your favicon     in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -56,31 +56,31 @@ app.use(passport.initialize());
 app.use(passport.session());
 var path = process.cwd();
 
-app.get('/', function(req, res, next) {
-  res.render('index');
-});
-app.use('/home', function(req,res,next){
-    console.log('req.user:',req.user);
-  res.render('home',{user: req.user})
-});
-app.use('/login',function(req,res,next){
-  res.render('login')
-});
-app.get('/profile',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    // res.render('profile', { user: req.user });
-    console.log(req.user);
-    console.log(req.session);
-    res.send(req.user);
-  });
+// app.get('/', function(req, res, next) {
+//   res.render('index');
+// });
+// app.use('/home', function(req,res,next){
+//     console.log('req.user:',req.user);
+//   res.render('home',{user: req.user})
+// });
+// app.use('/login',function(req,res,next){
+//   res.render('login')
+// });
+// app.get('/profile',
+//   require('connect-ensure-login').ensureLoggedIn(),
+//   function(req, res){
+//     // res.render('profile', { user: req.user });
+//     console.log(req.user);
+//     console.log(req.session);   // req.session.passport.user
+//     res.send(req.user);
+//   });
 
 app.route('/auth/twitter')
 	.get(passport.authenticate('twitter'));
 
 app.route('/auth/twitter/callback')
 	.get(passport.authenticate('twitter', {
-		successRedirect: '/profile',
+		successRedirect: '/myInterest',
 		failureRedirect: '/login'
 	}));
 
