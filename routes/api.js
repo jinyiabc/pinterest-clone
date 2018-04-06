@@ -115,41 +115,41 @@ app.post('/api/myInterest/:username',function(req, res, next){
 })
 
 app.post('/api/allInterests', function(req, res, next){
-    const query = {'username':'jinyiabc'};
+    const query = {'username':'jinyiabc12'};
   const update = {interests:
       [{
           "title":"cowabunga!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/cow.jpg"
       },
       {
           "title":"Win baby yeah!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"A winner is you!",
-		  "owner":"jinyiabc",
+		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winnerYou.jpg"
       }

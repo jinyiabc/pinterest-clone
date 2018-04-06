@@ -48,14 +48,14 @@
       <a>
           <img alt="" src="{{interest.imageUrl}}">
           <button class="close" type="button" (click)="deleteInterest(interest.title)">×</button>
-          <h3>{{interest.owner}}</h3>
+          <h3>{{interest.title}}</h3>
           <button class="close">
               <i class="fas fa-heart"></i>
               <i class="far fa-heart"></i>
           </button>
 
       </a>
-      <p>{{interest.title}}</p>
+      <p>{{interest.owner}}</p>
     </div>
 
   </ngx-masonry-item>
