@@ -37,6 +37,7 @@ export class MyInterestComponent implements OnInit {
     onSubmit(event){
           this.newInterest.title = event.target[0].value ;
           this.newInterest.imageUrl = event.target[1].value;
+          this.newInterest.owner = this.user;
           console.log(this.newInterest);  //  {title: "as", imageUrl: "image"}
           console.log(this.myInterests.push(this.newInterest));
           this.myinterests.addInterest(this.newInterest)
@@ -73,6 +74,7 @@ export class MyInterestComponent implements OnInit {
       this.authservice.logIn().subscribe(data =>
           {this.isAuthenticated = data;
         this.user = data.username;
+        console.log(this.user);
         this.globalEventsManager.showNavBar(true);
 
         this.myinterests.getMyInterests(this.user)
