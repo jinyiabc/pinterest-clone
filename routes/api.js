@@ -121,36 +121,42 @@ app.post('/api/allInterests', function(req, res, next){
           "title":"cowabunga!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/cow.jpg"
       },
       {
           "title":"Win baby yeah!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"A winner is you!",
 		  "owner":"jinyiabc12",
 		  "isLikedBy": ['jinyiabc1'],
+		  "isLiked": false,
           "imageUrl":"../assets/data/winnerYou.jpg"
       }
   ]};

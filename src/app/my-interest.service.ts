@@ -34,6 +34,7 @@ export class MyInterestService {
             })
         };
         const user = interest.owner;  // TBD
+        interest.isLiked = false;
         const addUrl = environment.app_url + `/myInterest/${user}`;
         return this.http.post<Interest>(addUrl, interest, httpOptions)
                         .catch(this.errorHandler)

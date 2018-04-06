@@ -5,7 +5,8 @@ const Interest = new Schema ({
     title: String,
     imageUrl: String,
     owner: String,
-    isLikedBy: [String]
+    isLikedBy: [String],
+    isLiked: Boolean
 });
 const User = new Schema({
     twitterId: String,
