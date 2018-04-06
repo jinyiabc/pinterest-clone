@@ -4,13 +4,13 @@
 <div class="masonry-demo">
 
 <ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true"  [updateLayout]="updLayout">
-  <ngx-masonry-item class="masonry-item" *ngFor="let interest of allInterests">
+  <ngx-masonry-item class="masonry-item" *ngFor="let interest of allInterests; let i = index">
       <div class="cover">
         <a>
             <img alt="" src="{{interest.imageUrl}}">
             <button class="close" type="button" (click)="deleteInterest(interest.title)">×</button>
             <h3>{{interest.title}}</h3>
-            <button class="close" (click)="switchLikes(interest)">
+            <button class="close" (click)="switchLikes(i)">
                 <i *ngIf="interest.isLiked" class="fas fa-heart"></i>
                 <i *ngIf="!interest.isLiked" class="far fa-heart"></i>
             </button>
