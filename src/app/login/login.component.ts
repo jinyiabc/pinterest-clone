@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
               private alertservice: AlertService,
               private globalEventsManager: GlobalEventsManager
               ) { }
-  logIn(){
-      this.authservice.logIn().subscribe(data => {
-          this.isAuthenticated = data
-      })
-  }
+  // logIn(){
+  //     this.authservice.logIn().subscribe(data => {
+  //         this.isAuthenticated = data
+  //     })
+  // }
 
 
   ngOnInit() {

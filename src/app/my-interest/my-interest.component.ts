@@ -68,10 +68,12 @@ export class MyInterestComponent implements OnInit {
                         console.log(data);},
                         err => this.errorMsg = err);
 
-      this.authservice.logIn().subscribe(data => this.isAuthenticated = data )
-                        // $("#inputFile").change(function () {
-                        //     readURL(this);
-                        // });
+      this.authservice.logIn().subscribe(data =>                 {this.isAuthenticated = data;
+       console.log(data);
+        this.user = data.username
+        console.log(this.user)},
+          err => this.errorMsg = err);
+
 
 
 }
