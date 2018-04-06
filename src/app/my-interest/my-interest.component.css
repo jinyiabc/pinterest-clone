@@ -51,8 +51,8 @@ body {
 .cover .close {
     float: none;
     vertical-align: top;
-    margin-left: 320px;
-    margin-top: -340px;
+    /* margin-left: 320px; */
+    /* margin-top: -340px; */
     color: #dc143c;
     opacity: .5;
 }
