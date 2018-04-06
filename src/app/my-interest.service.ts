@@ -53,6 +53,20 @@ export class MyInterestService {
 
     }
 
+    switchLikes(interest:Interest):Observable<any>{
+        const username = JSON.parse(localStorage.getItem('currentUser')).username;
+        const likeUrl = environment.app_url +`/${username}/isLikedBy`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+                'Authorization': 'my-auth-token'
+            })
+        };
+        return this.http.post<Observable<any>>(likeUrl, interest, httpOptions)
+                        .catch(this.errorHandler) ;
+
+    }
+
     errorHandler(error: HttpErrorResponse){
       return Observable.throw(error.message || "Server Error");
     }

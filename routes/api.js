@@ -31,7 +31,7 @@ app.get('/api/login',
   });
 
 app.post('/api/:username/islikedby', function(req, res, next){
-	const query_likers = { 'username':req.body.username,
+	const query_likers = { 'username':req.body.owner,
 					   'interests':{
 								$all:[
 									  {"$elemMatch": { "isLikedBy":req.params.username, 'title': req.body.title}}
@@ -44,7 +44,7 @@ app.post('/api/:username/islikedby', function(req, res, next){
 			res.send('you have already liked!');
 		} else {
 			const query = {
-				'username': req.body.username,
+				'username': req.body.owner,
 				'interests.title': req.body.title
 			};
 			const update = {

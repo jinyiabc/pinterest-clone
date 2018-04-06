@@ -20,6 +20,12 @@ export class AllinterestsComponent implements OnInit {
     };
 
     currentUser;
+    isLiked;
+
+    switchLikes(interest){
+        // interest.isLiked =  !interest.isLiked;
+        
+    }
   constructor(private myinterests:MyInterestService,
               private authservice:AuthService,
               private globalEventsManager:GlobalEventsManager) { }
@@ -28,7 +34,18 @@ export class AllinterestsComponent implements OnInit {
   ngOnInit() {
       this.myinterests.getAllInterests()
             .subscribe( data => {this.allInterests = data;
-                        console.log(data);},
+                        console.log(data);
+                        for( var i=0; i<data.length; i++){
+                            var interest = data[i];
+                            this.myinterests.switchLikes(interest).subscribe(data => {
+                                if(data === 'you have already liked!'){
+                                    this.allInterests[i].isLiked = true;
+                                } else {
+                                    this.allInterests[i].isLiked = false;
+                                }
+                            });
+                        }
+                    },
                         err => this.errorMsg = err);
 
         this.authservice.checkedLogin().subscribe(data =>
