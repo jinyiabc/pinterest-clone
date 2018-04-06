@@ -48,9 +48,15 @@
       <a>
           <img alt="" src="{{interest.imageUrl}}">
           <button class="close" type="button" (click)="deleteInterest(interest.title)">×</button>
-          <button class="js-like js-like-325690 btn-like btn-like--small photo-item__info">
-<svg viewBox="0 0 100 100" class="icon-heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#iconHeart"></use></svg>
-</button>
+
+          <button class="">
+              <i class="fas fa-heart"></i>
+          </button>
+          <button class="">
+              <i class="fas fa-heart"></i>
+              <i class="far fa-heart"></i>
+          </button>
+
       </a>
       <p>{{interest.title}}</p>
     </div>
