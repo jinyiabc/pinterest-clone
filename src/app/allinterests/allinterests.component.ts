@@ -37,17 +37,6 @@ export class AllinterestsComponent implements OnInit {
       this.myinterests.getAllInterests()
             .subscribe( data => {this.allInterests = data;
                         console.log(data);
-
-                        /*for( var i=0; i<data.length; i++){
-                            var interest = data[i];
-                            this.myinterests.switchLikes(interest).subscribe(data => {
-                                if(data === 'you have already liked!'){
-                                    this.allInterests[i].isLiked = true;
-                                } else {
-                                    this.allInterests[i].isLiked = false;
-                                }
-                            });
-                        }*/
                     },
                         err => this.errorMsg = err);
 

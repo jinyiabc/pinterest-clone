@@ -30,27 +30,37 @@ app.get('/api/login',
 	// res.send(true);
   });
 
-app.post('/api/:username/islikedby', function(req, res, next){
+app.post('/api/:liker/islikedby', function(req, res, next){
 	const query_likers = { 'username':req.body.owner,
 					   'interests':{
 								$all:[
-									  {"$elemMatch": { "isLikedBy":req.params.username, 'title': req.body.title}}
+									  {"$elemMatch": { "isLikedBy":req.params.liker, 'title': req.body.title}}
 									 ]
 							  }
 					 };
+
+	const query = {
+		'username': req.body.owner,
+		'interests.title': req.body.title
+		};
 	User.findOne(query_likers).then(function(result){
 		if(result){
 			console.log('you have already liked!');
-			res.send('you have already liked!');
+			// res.send('you have already liked!');
+			const update ={
+				$set:{'interests.$.isLiked': req.body.isLiked}
+			};
+			User.updateOne(query, update, {upsert:true}).then(function(){
+				User.findOne(query).then(function(user){
+					res.send(user);
+				});
+		}).catch(next);
 		} else {
-			const query = {
-				'username': req.body.owner,
-				'interests.title': req.body.title
-			};
 			const update = {
-				$push:{'interests.$.isLikedBy': req.params.username}
+				$push:{'interests.$.isLikedBy': req.params.liker},
+				$set:{'interests.$.isLiked': req.body.isLiked}
 			};
-			User.updateOne(query, update, {uperst:true}).then(function(){
+			User.updateOne(query, update, {upsert:true}).then(function(){
 				User.findOne(query).then(function(user){
 					res.send(user);
 				})
