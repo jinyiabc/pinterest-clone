@@ -19,7 +19,7 @@ export class MyInterestComponent implements OnInit {
     myInterests;
     errorMsg;
     isAuthenticated;
-    public newInterest = new Interest('as','');
+    public newInterest = new Interest('as','',this.user);
 
     updLayout: boolean = false;
     updateLayout() {

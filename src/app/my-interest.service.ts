@@ -33,7 +33,7 @@ export class MyInterestService {
                 'Authorization': 'my-auth-token'
             })
         };
-        const user = 'jinyiabc';  // TBD
+        const user = interest.owner;  // TBD
         const addUrl = environment.app_url + `/myInterest/${user}`;
         return this.http.post<Interest>(addUrl, interest, httpOptions)
                         .catch(this.errorHandler)

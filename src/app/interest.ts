@@ -4,7 +4,8 @@ export class Interest {
 
     constructor(
       public title: string,
-      public imageUrl: string
+      public imageUrl: string,
+      public owner: string
       // public requester?: string
     ) {
     // this.isTraded = IBook.DEFAULT_NAME;

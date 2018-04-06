@@ -31,20 +31,32 @@ app.get('/api/login',
   });
 
 app.post('/api/:username/islikedby', function(req, res, next){
-	const query = {
-		"username": req.body.username,
-		"interests.title": req.body.title
-	}
-	const update = {
-		$set: {
-			"interests.$.isLiked": req.params.username
+	const query_likers = { 'username':req.body.username,
+					   'interests':{
+								$all:[
+									  {"$elemMatch": { "isLikedBy":req.params.username, 'title': req.body.title}}
+									 ]
+							  }
+					 };
+	User.findOne(query_likers).then(function(result){
+		if(result){
+			console.log('you have already liked!');
+			res.send('you have already liked!');
+		} else {
+			const query = {
+				'username': req.body.username,
+				'interests.title': req.body.title
+			};
+			const update = {
+				$push:{'interests.$.isLikedBy': req.params.username}
+			};
+			User.updateOne(query, update, {uperst:true}).then(function(){
+				User.findOne(query).then(function(user){
+					res.send(user);
+				})
+			}).catch(next);
 		}
-	}
-	User.findOneAndUpdate(query, update, {upsert: true}).then(function(){
-		  User.findOne(query).then(function(result){
-			res.send(result);
-		  })
-	}).catch(next);
+	});
 });
 
 
@@ -107,31 +119,37 @@ app.post('/api/allInterests', function(req, res, next){
   const update = {interests:
       [{
           "title":"cowabunga!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/cow.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"Win baby yeah!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winbaby.jpg"
       },
       {
           "title":"A winner is you!",
+		  "owner":"jinyiabc",
 		  "isLikedBy": ['jinyiabc1'],
           "imageUrl":"../assets/data/winnerYou.jpg"
       }
