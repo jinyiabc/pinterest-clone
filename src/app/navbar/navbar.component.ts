@@ -24,10 +24,10 @@ export class NavbarComponent implements OnInit {
       this.authservice.logout();
   }
   ngOnInit() {
-      this.zone.run(() =>
-            this.authservice.checkedLogin().subscribe(
-                data => this.isLoggedIn = data,
-                err => this.errorMsg = err ));
+      // this.zone.run(() =>
+      //       this.authservice.checkedLogin().subscribe(
+      //           data => this.isLoggedIn = data,
+      //           err => this.errorMsg = err ));
 
         this.globalEventsManager.showNavBarEmitter.subscribe((mode)=>{
             this.showNavBar = mode;

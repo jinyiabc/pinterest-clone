@@ -32,19 +32,19 @@ export class AuthService {
 constructor(private http: HttpClient) { } // DI
 
 isLoggedIn = false;
-logIn():Observable<User>{
-
-    const myUrl =  "https://sprinterest-fcc.herokuapp.com/api/login";
-    return this.http.get<User>(myUrl)
-                    .map(user => {
-                        if(user){
-                            localStorage.setItem('currentUser', JSON.stringify(user));
-                            this.isLoggedIn = true;
-                        }
-                        return user;
-                    })
-                    .catch(this.errorHandler);
-}
+// logIn():Observable<User>{
+//
+//     const myUrl =  "https://sprinterest-fcc.herokuapp.com/api/login";
+//     return this.http.get<User>(myUrl)
+//                     .map(user => {
+//                         if(user){
+//                             localStorage.setItem('currentUser', JSON.stringify(user));
+//                             this.isLoggedIn = true;
+//                         }
+//                         return user;
+//                     })
+//                     .catch(this.errorHandler);
+// }
 logout(): void {
     localStorage.removeItem('currentUser');
 }
@@ -53,13 +53,13 @@ errorHandler(error: HttpErrorResponse){
   return Observable.throw(error.message || "Server Error");
 }
 
-checkedLogin():Observable<any>{
-    const status = JSON.parse(localStorage.getItem('currentUser'));
-    if (status === null || status.length === 0){
-        return Observable.of(false);
-    }
-    return Observable.of(status.withCredentials);
-}
+// checkedLogin():Observable<any>{
+//     const status = JSON.parse(localStorage.getItem('currentUser'));
+//     if (status === null || status.length === 0){
+//         return Observable.of(false);
+//     }
+//     return Observable.of(status.withCredentials);
+// }
 
 }
 /*
