@@ -63,15 +63,17 @@ export class MyInterestComponent implements OnInit {
               private authservice:AuthService) { }
 
   ngOnInit() {
-      this.myinterests.getMyInterests(this.user)
-            .subscribe( data => {this.myInterests = data;
-                        console.log(data);},
-                        err => this.errorMsg = err);
+      // this.myinterests.getMyInterests(this.user)
+      //       .subscribe( data => {this.myInterests = data;
+      //                   console.log(data);},
+      //                   err => this.errorMsg = err);
 
       this.authservice.logIn().subscribe(data =>                 {this.isAuthenticated = data;
-       console.log(data);
-        this.user = data.username
-        console.log(this.user)},
+        this.user = data.username;
+        this.myinterests.getMyInterests(this.user)
+              .subscribe( data => {this.myInterests = data;
+                          console.log(data);},
+                          err => this.errorMsg = err);},   //'jinyiabc'
           err => this.errorMsg = err);
 
 
