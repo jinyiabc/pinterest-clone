@@ -17,7 +17,7 @@ export class MyInterestComponent implements OnInit {
     user = 'jinyiabc';
     myInterests;
     errorMsg;
-    isLoggedIn;
+    isAuthenticated;
     public newInterest = new Interest('as','');
 
     updLayout: boolean = false;
@@ -68,7 +68,7 @@ export class MyInterestComponent implements OnInit {
                         console.log(data);},
                         err => this.errorMsg = err);
 
-      this.authservice.logIn().subscribe(data => this.isLoggedIn = data )
+      this.authservice.logIn().subscribe(data => this.isAuthenticated = data )
                         // $("#inputFile").change(function () {
                         //     readURL(this);
                         // });
