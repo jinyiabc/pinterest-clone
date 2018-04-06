@@ -71,6 +71,7 @@ app.get('/profile',
   function(req, res){
     // res.render('profile', { user: req.user });
     console.log(req.user);
+    console.log(req.session);
     res.send(req.user);
   });
 
@@ -79,7 +80,7 @@ app.route('/auth/twitter')
 
 app.route('/auth/twitter/callback')
 	.get(passport.authenticate('twitter', {
-		successRedirect: '/home',
+		successRedirect: '/profile',
 		failureRedirect: '/login'
 	}));
 

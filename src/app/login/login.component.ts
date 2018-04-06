@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
               private globalEventsManager: GlobalEventsManager
               ) { }
   logIn(){
-      this.authservice.logIn().subscribe()
+      this.authservice.logIn().subscribe(data => {
+          this.isAuthenticated = data
+      })
   }
 
 
