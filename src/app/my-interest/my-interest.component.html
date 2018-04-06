@@ -2,23 +2,6 @@
 <h2>Your Spring Dashobard</h2>
 <h3>{{errorMsg}}</h3>
 
-<!-- <form  class="form-signin" #heroForm="ngForm" (ngSubmit) = "onSubmit($event)">
-    <div class="form-group">
-      <label for="name">Add New</label>
-      <input type="text" class="form-control" id="name" required
-        [(ngModel)]="newInterest.title" name="title"
-          #title="ngModel">
-      <input type="text" class="form-control" id="imageUrl" required
-        [(ngModel)]="newInterest.imageUrl" name="imageUrl"
-          #imageUrl="ngModel">
-
-      <div [hidden]="title.valid || title.pristine" class="alert alert-danger">Title is required
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
-</form> -->
-<!-- <pre>{{isAuthenticated | json}}</pre> -->
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add new</button>
 
@@ -73,16 +56,3 @@
 </ngx-masonry>
 
 </div>
-
-<!-- <div class="grid">
-<div class="grid-sizer"></div>
-
-<div class="grid-item" *ngFor= "let interest of myInterests" >
-<a>
-    <img alt="" src="{{interest.imageUrl}}">
-    <button type="button" (click)="deleteInterest(interest.title)">×</button>
-</a>
-<p>{{interest.title}}</p>
-</div>
-
-</div> -->

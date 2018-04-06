@@ -1,0 +1,19 @@
+<h2>Recent Sprinterest</h2>
+<h3>{{errorMsg}}</h3>
+
+<div class="masonry-demo">
+
+<ngx-masonry [options]="masonryOptions" [useImagesLoaded]="true"  [updateLayout]="updLayout">
+  <ngx-masonry-item class="masonry-item" *ngFor="let interest of allInterests">
+    <div class="cover">
+      <a>
+          <img alt="" src="{{interest.imageUrl}}">
+          <button class="close" type="button" (click)="deleteInterest(interest.title)">×</button>
+      </a>
+      <p>{{interest.title}}</p>
+    </div>
+
+  </ngx-masonry-item>
+</ngx-masonry>
+
+</div>

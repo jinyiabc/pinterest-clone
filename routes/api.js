@@ -37,6 +37,18 @@ app.get('/api/myInterest/:user', function(req, res, next){
     });
 })
 
+app.get('/api/allInterests', function(req, res, next){
+    const query = {};
+	var allInterests = [];
+    User.find(query).then(function(results){
+		for( var i=0; i< results.length; i++){
+			allInterests = allInterests.concat(results[i].interests)
+		}
+      res.send(allInterests);
+    });
+})
+
+
 app.delete('/api/myInterest/:title', function(req, res, next){
     const query = {'username':'jinyiabc'};
     const update = {
@@ -54,15 +66,6 @@ app.delete('/api/myInterest/:title', function(req, res, next){
 })
 
 
-// Get all polls from all users
-app.get('/polls',function(req,res,next){
-  const query = {};
-
-  User.find(query).then(function(results){
-    console.log(results);
-    res.send(results);
-  });
-});
 
 
 app.post('/api/myInterest/:username',function(req, res, next){
@@ -82,7 +85,7 @@ app.post('/api/myInterest/:username',function(req, res, next){
 })
 
 app.post('/api/allInterests', function(req, res, next){
-    const query = {'username':'jinyiabc'};
+    const query = {'username':'jinyiabc1'};
   const update = {interests:
       [{
           "title":"cowabunga!",

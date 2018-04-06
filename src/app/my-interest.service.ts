@@ -18,6 +18,14 @@ export class MyInterestService {
                         .catch(this.errorHandler);
     }
 
+    getAllInterests():Observable<Interest[]>{
+        // const myUrl = '../assets/data/data.json';
+        const myUrl = environment.app_url + '/allInterests';
+
+        return this.http.get<Interest[]>(myUrl)
+                        .catch(this.errorHandler);
+    }
+
     addInterest(interest:Interest):Observable<Interest>{
         const httpOptions = {
             headers: new HttpHeaders({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // import { AllbooksComponent } from './allbooks/allbooks.component';
 import { PageNotFoundComponent } from './page-not-found/not-found.component';
+import { AllinterestsComponent } from './allinterests/allinterests.component';
 
 const routes: Routes = [
 
@@ -9,6 +10,7 @@ const routes: Routes = [
                         loadChildren: 'app/my-interest/my-interest.module#MyInterestModule'
                         // canLoad:[AuthGuard]
                         },
+                        {path: 'allInterests', component: AllinterestsComponent},
                         { path: '**', component: PageNotFoundComponent }
                       ];
 
@@ -18,5 +20,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [
-                                  PageNotFoundComponent
+                                  PageNotFoundComponent,
+                                  AllinterestsComponent
                                ];

@@ -70,7 +70,8 @@ export class MyInterestComponent implements OnInit {
       //                   console.log(data);},
       //                   err => this.errorMsg = err);
 
-      this.authservice.logIn().subscribe(data =>                 {this.isAuthenticated = data;
+      this.authservice.logIn().subscribe(data =>
+          {this.isAuthenticated = data;
         this.user = data.username;
         this.globalEventsManager.showNavBar(true);
 

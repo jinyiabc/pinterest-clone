@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AlertService } from './alert/alert.service';
 import { GlobalEventsManager } from './GlobalEventsManager';
 import { AuthGuard } from './auth-guard.service';
+import { AllinterestsComponent } from './allinterests/allinterests.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AuthGuard } from './auth-guard.service';
     NavbarComponent,
     routingComponents,
     LoginComponent,
-    MasonComponent
+    MasonComponent,
+    AllinterestsComponent
   ],
   imports: [
     BrowserModule,
