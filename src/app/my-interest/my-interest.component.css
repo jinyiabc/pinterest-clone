@@ -103,10 +103,10 @@ ngx-masonry {
 }
 
 .masonry-item {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	background-color: #f1f1f1;
 	background-size: cover;
-	width: 340px;
+	/* width: 340px; */
 }
 
 .masonry-item a img {
