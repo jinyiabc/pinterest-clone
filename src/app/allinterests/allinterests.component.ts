@@ -37,10 +37,28 @@ export class AllinterestsComponent implements OnInit {
       this.myinterests.getAllInterests()
             .subscribe( data => {this.allInterests = data;
                         console.log(data);
+                        this.authservice.checkedLogin().subscribe(status =>
+                            {
+                                if(status){
+                                    this.globalEventsManager.showNavBar(true);
+                                    this.currentUser = status;
+                                    for(var i=0; i<data.length; i++){
+                                        if(data[i].owner === this.currentUser){
+                                            this.allInterests[i].isOwner = true;
+                                        } else {
+                                            this.allInterests[i].isOwner = false;
+                                        }
+                                    }
+                                } else {
+                                    this.globalEventsManager.showNavBar(false);
+                                    this.currentUser = '';
+                                }
+                                console.log(this.currentUser);
+                            });
                     },
                         err => this.errorMsg = err);
 
-        this.authservice.checkedLogin().subscribe(data =>
+/*        this.authservice.checkedLogin().subscribe(data =>
             {
                 if(data){
                     this.globalEventsManager.showNavBar(true);
@@ -50,7 +68,7 @@ export class AllinterestsComponent implements OnInit {
                     this.currentUser = '';
                 }
                 console.log(this.currentUser);
-            });
+            });*/
   }
 
 }

@@ -6,7 +6,8 @@ export class Interest {
       public title: string,
       public imageUrl: string,
       public owner: string,
-      public isLiked?: boolean
+      public isLiked?: boolean,
+      public isOwner?: boolean
       // public requester?: string
     ) {
     // this.isTraded = IBook.DEFAULT_NAME;
