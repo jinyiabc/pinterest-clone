@@ -126,49 +126,49 @@ app.post('/api/myInterest/:username',function(req, res, next){
 })
 
 app.post('/api/allInterests', function(req, res, next){
-    const query = {'username':'jinyiabc12'};
+    const query = {'username':'test'};
   const update = {interests:
       [{
-          "title":"cowabunga!",
-		  "owner":"jinyiabc12",
+          "title":"Follow Me",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/cow.jpg"
+          "imageUrl":"https://images.pexels.com/photos/428539/pexels-photo-428539.jpeg?auto=compress&cs=tinysrgb&h=350"
       },
       {
-          "title":"Win baby yeah!",
-		  "owner":"jinyiabc12",
+          "title":"Bali",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/winbaby.jpg"
+          "imageUrl":"https://images.pexels.com/photos/175658/pexels-photo-175658.jpeg?auto=compress&cs=tinysrgb&h=350"
       },
       {
-          "title":"Win baby yeah!",
-		  "owner":"jinyiabc12",
+          "title":"Angel",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/winbaby.jpg"
+          "imageUrl":"https://images.pexels.com/photos/915051/pexels-photo-915051.jpeg?auto=compress&cs=tinysrgb&h=350"
       },
       {
-          "title":"Win baby yeah!",
-		  "owner":"jinyiabc12",
+          "title":"Mirror",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/winbaby.jpg"
+          "imageUrl":"https://images.pexels.com/photos/678640/pexels-photo-678640.jpeg?auto=compress&cs=tinysrgb&h=350"
       },
       {
-          "title":"Win baby yeah!",
-		  "owner":"jinyiabc12",
+          "title":"Merry Chrismas",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/winbaby.jpg"
+          "imageUrl":"https://images.pexels.com/photos/688012/pexels-photo-688012.jpeg?auto=compress&cs=tinysrgb&h=350"
       },
       {
-          "title":"A winner is you!",
-		  "owner":"jinyiabc12",
+          "title":"Boy",
+		  "owner":"test",
 		  "isLikedBy": ['jinyiabc1'],
 		  "isLiked": false,
-          "imageUrl":"../assets/data/winnerYou.jpg"
+          "imageUrl":"https://images.pexels.com/photos/715546/pexels-photo-715546.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
   ]};
 
