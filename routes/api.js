@@ -48,7 +48,8 @@ app.post('/api/:liker/islikedby', function(req, res, next){
 			console.log('you have already liked!');
 			// res.send('you have already liked!');
 			const update ={
-				$set:{'interests.$.isLiked': req.body.isLiked}
+				$set:{'interests.$.isLiked': req.body.isLiked},
+				$pull:{'interests.$.isLikedBy': req.params.liker}
 			};
 			User.updateOne(query, update, {upsert:true}).then(function(){
 				User.findOne(query).then(function(user){
