@@ -10,7 +10,7 @@
             <img alt="" src="{{interest.imageUrl}}">
             <!-- <button class="close" type="button" (click)="deleteInterest(interest.title)">×</button> -->
             <h3>{{interest.title}}</h3>
-            <button class="close" (click)="switchLikes(i)">
+            <button class="close" (click)="switchLikes(i)" [style.color] = "interest.isOwner ? '#dc143c' : '#fbd0d9'">
                 <i *ngIf="interest.isLiked" class="fas fa-heart"></i>
                 <i *ngIf="!interest.isLiked" class="far fa-heart"></i>
             </button>
