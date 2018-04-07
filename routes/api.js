@@ -11,7 +11,7 @@ function isLoggedIn (req, res, next) {
 }
 
 app.get('/api/login',
-  require('connect-ensure-login').ensureLoggedIn(),
+  // require('connect-ensure-login').ensureLoggedIn(),
   function(req, res) {
       // console.log('Is authenticate?',req.isAuthenticated());
       console.log('req.user',req.user);

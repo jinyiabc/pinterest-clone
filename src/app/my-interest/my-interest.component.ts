@@ -69,17 +69,18 @@ export class MyInterestComponent implements OnInit {
       // this.myinterests.getMyInterests(this.user)
       //       .subscribe( data => {this.myInterests = data;
       //                   console.log(data);},
-      //                   err => this.e rrorMsg = err);
+      //                   err => this.errorMsg = err);
 
-      // this.authservice.logIn().subscribe(data =>
-           this.user = JSON.parse(localStorage.getItem('currentUser')).username;
+      this.authservice.logIn().subscribe(data =>
+          {this.isAuthenticated = data;
+            this.user = data.username;
             console.log(this.user);
             this.globalEventsManager.showNavBar(true);
             this.myinterests.getMyInterests(this.user)
                   .subscribe( data => {this.myInterests = data;
                               console.log(data);},
-                              err => this.errorMsg = err);  //'jinyiabc'
-              // err => this.errorMsg = err);
+                              err => this.errorMsg = err);},   //'jinyiabc'
+              err => this.errorMsg = err);
 
 
 
